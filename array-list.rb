@@ -19,6 +19,7 @@ class ArrayList
   end
 
   def display
+    @storage.sort
     @size.times do |i|
       puts @storage[i]
     end
@@ -50,6 +51,10 @@ class ArrayList
 
   def empty?
     @size == 0
+  end
+
+  def sort
+    @storage.sort!
   end
 
 end

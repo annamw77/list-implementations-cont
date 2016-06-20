@@ -20,17 +20,18 @@ class LinkedList
 
    def add(value)
        if @size == 0
-         @head = Node.new(value,nil)
+           @head = Node.new(value,nil)
+           @size += 1
+         else
+         # Traverse to the end of the list
+         # And insert a new node over there with the specified value
+         current = @head
+           while current.next_node != nil
+               current = current.next_node
+           end
+         current.next_node = Node.new(value,nil)
          @size += 1
        end
-       # Traverse to the end of the list
-       # And insert a new node over there with the specified value
-       current = @head
-       while current.next_node != nil
-           current = current.next_node
-       end
-       current.next_node = Node.new(value,nil)
-       @size += 1
        self
    end
 
@@ -94,6 +95,40 @@ class LinkedList
        current = current.next_node
      end
      return max
+   end
+
+   def sort
+     # ;_;
+   end
+
+   def reverse
+    current = @head
+    next_node = @head.next_node
+    prev_node = nil
+
+    while current != nil #until you reach the last node
+      next_node = current.next_node
+      current.next_node = prev_node
+      prev_node = current
+      current = next_node
+    end
+
+    @head = prev_node
+
+    #loop through entire linked list
+
+    #establish pointers: current, next_node, prev_node
+        #current=@head
+        #next_node=@head.next_node
+        #prev_node=nil
+
+    # start at head (current)
+      # next_node should point at current.next_node... so we remember which node comes next after changing the connection
+      # change the connection, current.next_node should now equal prev_node, so it "points backwards"
+      # prev_node should point at current... because we are able to change the current pointer to move on to the next item
+      # current = next_node.
+    # repeat the above process until current = nil, because that means we have reached the end of the list
+    # establish the last node as the new head 
    end
 
 end
